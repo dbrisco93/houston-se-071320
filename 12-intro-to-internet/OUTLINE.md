@@ -1,0 +1,23 @@
+- What is the Internet? WWW?
+- History
+  - Stanford <--> UCLA, ARPANET
+  - Vinton Cerf => TCP
+    - HTTP, HTML, Browser
+    - TCP/IP => Protocols!
+    - IP Address == URL
+- Bringing it all together!
+  - client, ISP, server, the cloud == wires
+    - Request / Response
+  - router, DNS, IP Address
+    - traceroute, :80
+- Intermission!
+- Documentation for the web?
+  - MDN
+  - Types of HTTP Requests
+    - Why do we keep saying GET?
+    - GET Request Response Cycle
+- Code Example! Rack!
+  - README
+  - Walkthrough
+  - rackup, localhost:port
+  - Static vs Dynamic
