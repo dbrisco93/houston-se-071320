@@ -1,0 +1,13 @@
+<h1> <%= @book.title %> </h1>
+
+<p>
+  Desc: <%= @book.desc %>
+</p>
+
+<form action="/books/<%= @book.id %>" method="post">
+  <input type="hidden" value="delete" name="_method">
+  <input type="submit" name="submit" value="Delete Book">
+</form>
+
+
+<a href='/books'> Back to home </a>
