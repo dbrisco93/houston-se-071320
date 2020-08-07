@@ -1,0 +1,7 @@
+<h1> <%= @book.title %> </h1>
+
+<p> <%= @book.desc %> </p>
+
+<%= form_tag("/books/#{@book.id}", method: :delete) do %>
+  <%= submit_tag 'Delete the book' %>
+<% end %>
