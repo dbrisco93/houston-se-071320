@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   # get '/books', to: 'books#index'
   resources :authors, only: [:index,:show]
   resources :books
+
+  get '/login', to: 'sessions#new'
 end

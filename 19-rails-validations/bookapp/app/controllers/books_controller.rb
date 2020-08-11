@@ -17,7 +17,14 @@ class BooksController < ApplicationController
   # POST
   # redirect
   def create
-    @book = Book.create(books_params)
+    @book = Book.new(books_params)
+
+    if @book.valid?
+      @book.save
+    else
+      flash[:message] = @book.errors
+    end
+
     redirect_to books_path
   end
 
