@@ -1,0 +1,17 @@
+<% if flash[:message] %>
+    <h4 style="color: red;">
+      Alert: <%= flash[:message] %>
+    </h4>
+<% end %>
+<h1>List of all the books</h1>
+
+<% @books.each do |book| %>
+
+  <!-- <a href=<%= "/books/#{book.id}" %>>
+    <li>
+      <%= book.title %>
+    </li>
+  </a> -->
+
+  <li> <%= link_to book.title, book_path(book), :method => :get %> </li>
+<% end %>

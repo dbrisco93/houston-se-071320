@@ -1,0 +1,18 @@
+<% if flash[:message] %>
+    <h4 style="color: red;">
+      Alert: <%= flash[:message] %>
+    </h4>
+<% end %>
+
+<h1>List of all the Authors</h1>
+
+<% @authors.each do |author| %>
+
+  <!-- <a href=<%= "/authors/#{author.id}" %>>
+    <li>
+      <%= author.name %>
+    </li>
+  </a> -->
+
+  <li> <%= link_to author.name, author_path(author), :method => :get %> </li>
+<% end %>
