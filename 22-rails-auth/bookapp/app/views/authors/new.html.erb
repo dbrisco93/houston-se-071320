@@ -1,0 +1,13 @@
+<h1>This is new page</h1>
+
+<%= form_with model:@author do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+
+  <%= f.submit %>
+
+<% end %>

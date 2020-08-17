@@ -1,0 +1,15 @@
+<% if flash[:message] %>
+    <h4 style="color: red;">
+      Alert: <%= flash[:message] %>
+    </h4>
+<% end %>
+
+<div class='header'>
+  <h1>List of all the books</h1>
+</div>
+
+<div class='content'>
+  <% @books.each do |book| %>
+    <li> <%= link_to book.title, book_path(book), :method => :get %> </li>
+  <% end %>
+</div>
