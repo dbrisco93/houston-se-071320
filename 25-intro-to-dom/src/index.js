@@ -1,4 +1,19 @@
-let img_tag = document.querySelector('img')
-console.log(dankMemes)
+let header = document.querySelector('span').querySelector('h1')
+header.innerText = '🔥 Memesssss'
 
-img_tag.src = dankMemes[0]
+
+dankMemes.forEach(function (item){
+  // Create an image tag
+  const imgTag = document.createElement('img')
+
+  // Change the source
+  imgTag.src = item
+
+  // ✋🏻 on the DOM
+  const imageContainer = document.querySelector('#sometext')
+  imageContainer.appendChild(imgTag)
+})
+
+
+let removeDiv = document.querySelector('#removethis')
+removeDiv.remove()
