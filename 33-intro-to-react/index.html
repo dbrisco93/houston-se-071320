@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello World</title>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" charset="utf-8"></script>
+
+  </head>
+
+  <body>
+    <div id="root">
+    </div>
+  </body>
+
+  <script type="text/babel">
+
+    function Greeting({ phrase }){
+      return (
+        <h1> {phrase} </h1>
+      )
+    }
+
+    ReactDOM.render(
+      <span>
+        <Greeting phrase="Goodbye" />
+        <Greeting phrase="Hello World" />
+        <Greeting phrase="Ssup?" />
+      </span>,
+      document.getElementById('root')
+    );
+  </script>
+</html>
