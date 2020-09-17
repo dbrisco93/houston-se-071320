@@ -8,10 +8,23 @@ class BookForm extends React.Component {
     img: ''
   }
 
-  state = this.initialState
+  constructor() {
+    super()
+    this.state = this.initialState
+
+    console.log(this.__proto__.constructor.name, "constructor")
+  }
+
+  componentDidUpdate() {
+      console.log(this.__proto__.constructor.name, "did update")
+  }
+
+  componentDidMount() {
+    console.log(this.__proto__.constructor.name, "mounting")
+  }
 
   componentWillUnmount() {
-    console.log(this.__proto__.constructor.name, "will unmount")
+    console.log(this.__proto__.constructor.name, "will unmount soon")
   }
 
   handleInputChange = (e) => {

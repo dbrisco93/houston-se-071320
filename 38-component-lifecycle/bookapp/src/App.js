@@ -9,13 +9,23 @@ import BookForm from './Components/BookForm'
 
 class App extends Component {
 
-  state = {
-    books: [],
-    addingBook: false,
-    editingBook: false
+  constructor() {
+    super()
+    this.state = {
+      books: [],
+      addingBook: false,
+      editingBook: false
+    }
+    console.log(this.__proto__.constructor.name, "constructor")
+  }
+
+  componentDidUpdate() {
+      console.log(this.__proto__.constructor.name, "did update")
   }
 
   componentDidMount() {
+    console.log(this.__proto__.constructor.name, "mounting")
+
     fetch('http://localhost:3000/books')
     .then(res => res.json())
     .then(books => {
