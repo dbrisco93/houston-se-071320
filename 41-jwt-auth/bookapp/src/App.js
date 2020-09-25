@@ -20,36 +20,23 @@ import {
 class App extends Component {
 
   state = {
-    books: []
+    isLoggedIn: false
   }
 
-  componentDidMount() {
-    console.log('App component mounts.')
-
-    fetch('http://localhost:3000/books')
-    .then(res => res.json())
-    .then(books => {
-      this.setState({ books: books })
-    })
-  }
-
-  handleDeleteBtn = (e,deleteBook) => {
-    fetch(`http://localhost:3000/books/${deleteBook.id}`,{
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(_ => {
-      const filteredBooks = [...this.state.books].filter(book => book.id !== deleteBook.id)
-      this.setState({ ...this.state, books: filteredBooks })
-    })
-    .catch(error => console.log(error))
+  componentDidMount(){
+    if(localStorage.getItem('auth_key')){
+      this.setState({ isLoggedIn: true })
+    }
   }
 
   handleBookSubmit = (newBook) => {
     this.setState({ books: [...this.state.books, newBook], addingBook: false })
+  }
+
+  handleLogin = () => {
+    if(localStorage.getItem('auth_key')){
+      this.setState({ isLoggedIn: true })
+    }
   }
 
   render(){
@@ -57,23 +44,33 @@ class App extends Component {
       <div className="parent">
         <BrowserRouter>
 
-          <Header />
+          <Header isLoggedIn={this.state.isLoggedIn} />
 
           <Switch>
 
             <Route exact path="/" component={() => {
-              return (
-                <BookContainer books={this.state.books} handleDeleteBtn={this.handleDeleteBtn}/>
-              )
+              if(localStorage.getItem('auth_key')){
+                return <BookContainer />
+              }else{
+                return <Redirect to="/login" />
+              }
             }} />
 
             <Route exact path="/newbook">
               <BookForm handleBookSubmit={this.handleBookSubmit} />
             </Route>
 
-            <Route path="/login" component={Login} />
+            <Route path="/login" component={() => {
+              return <Login handleLogin={this.handleLogin} />
+            }} />
 
             <Route path="/signup" component={SignUp} />
+
+            <Route path="/logout" component={() => {
+              localStorage.clear()
+              this.setState({ isLoggedIn: false })
+              return <Redirect to="/login" />
+            }} />
 
             <Route>
               <Redirect to="/" />

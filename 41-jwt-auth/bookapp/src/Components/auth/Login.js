@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  withRouter
+} from 'react-router';
 
 class Login extends React.Component {
 
@@ -26,7 +29,11 @@ class Login extends React.Component {
       },
       body: JSON.stringify(newUser)
     }).then(res => res.json())
-    .then(token => localStorage.setItem('auth_key',token['auth_key']))
+    .then(token => {
+      localStorage.setItem('auth_key',token['auth_key'])
+      this.props.handleLogin()
+      this.props.history.push('/')
+    })
   }
 
   render(){
@@ -43,4 +50,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

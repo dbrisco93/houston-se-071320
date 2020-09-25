@@ -12,7 +12,7 @@ const BookCard = (props) => {
       </div>
 
       <div className='booktitle'>
-        Author: { props.book.author }
+        Author: { props.book.author.username }
       </div>
 
       <div className='booktitle'>
